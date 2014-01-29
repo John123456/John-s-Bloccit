@@ -12,13 +12,11 @@
             <%= post.user.name %><br/>
             <%= post.comments.count %> Comments
           </small>
-    <p class="lead"><%= @topic.description %></p>
-    <% @posts.each do |post| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to (Markdown post.title), [@topic, post] %>
-          </h4>
+     <small>
+     <%= image_tag(post.user.image.tiny.url) if post.user.image? %>
+            submitted <%= time_ago_in_words(post.created_at) %> ago by 
+            <%= post.user.name %><br/>
+            <%= post.comments.count %> Comments
          <small>
     submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
     <%= post.comments.count %> Comments

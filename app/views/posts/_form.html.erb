@@ -9,6 +9,13 @@
       </ul>
     </div>
   <% end %>
+
+    <small>
+      <%= image_tag(@post.user.image.tiny.url) if @post.user.image? %>
+      submitted <%= time_ago_in_words(@post.created_at) %> ago by 
+      <%= @post.user.name %>
+    </small> 
+
   <%= control_group_tag(post.errors[:title]) do %>
     <%= f.label :title, class: 'control-label' %>
     <div class="controls">
@@ -26,4 +33,5 @@
       <%= f.submit "Save", class: 'btn' %>
     </div>
   </div>
+mount_uploader :image, ImageUploader
 <% end %>

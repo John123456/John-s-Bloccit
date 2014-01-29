@@ -14,6 +14,25 @@
 </div>
   <div class="span4">
 
+
+
+<div class="row">
+  <div class="span8">
+    <small>
+      <%= image_tag(@post.user.image.tiny.url) if @post.user.image? %>
+      submitted <%= time_ago_in_words(@post.created_at) %> ago by 
+      <%= @post.user.name %>
+    </small>
+    <p><%= markdown @post.body %></p>
+  
+</div>
+  <div class="span4">
+
+
+
+
+
+
 <% if can? :edit, @post %>
   <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-large btn-block' %>
 <% end %>
