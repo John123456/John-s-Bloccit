@@ -6,7 +6,7 @@ module ApplicationHelper
       content_tag :div, capture(&block), class: 'control-group'
     end
   end
-end
+
 
 def markdown(text)
   renderer = Redcarpet::Render::HTML.new
@@ -24,7 +24,4 @@ end
     end
     super *[collection_or_options, options].compact
   end
-
-
-
 end
