@@ -34,6 +34,10 @@ end
    @post = Post.find(params[:id])
     authorize! :edit, @post, message: "You need to own the post to edit it."
  end
+
+ def destroy
+  @topic = Topic.find(params[:topic_id])
+  
  
   def update
     @topic = Topic.find(params[:topic_id])

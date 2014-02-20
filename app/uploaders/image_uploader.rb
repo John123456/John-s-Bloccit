@@ -52,4 +52,4 @@ version :thumb do
   #   "something.jpg" if original_filename
   # end
 
-end
+# end
