@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
   def index
-   # @topics = Topic.all
    @topics = Topic.paginate(page: params[:page], per_page: 10)
   end
 
@@ -11,8 +10,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-   # @posts = @topic.posts
-   @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
   end
 
   def edit
@@ -30,11 +28,11 @@ class TopicsController < ApplicationController
       flash[:error] = "Error creating topic. Please try again."
       render :new
     end
-    end
+  end
 
   def update
     @topic = Topic.find(params[:id])
- authorize! :update, @topic, message: "You need to own the topic to update it."
+    authorize! :update, @topic, message: "You need to own the topic to update it."
     if @topic.update_attributes(params[:topic])
       redirect_to @topic
     else
@@ -43,7 +41,7 @@ class TopicsController < ApplicationController
     end
   end
 
-def destroy
+  def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
     authorize! :destroy, @topic, message: "You need to own the topic to delete it."
@@ -54,5 +52,5 @@ def destroy
       flash[:error] = "There was an error deleting the topic."
       render :show
     end
-
+  end
 end
